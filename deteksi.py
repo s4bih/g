@@ -28,8 +28,8 @@ video_Capture = cv2.VideoCapture(0)
 fps = int(videoCapture.get(cv2.CAP_PROP_FPS))
 width = int(videoCapture.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(videoCapture.get(cv2.CAP_PROP_FRAME_HEIGHT))
-output_video_path = output_video
-output_video = cv2.VideoWriter(output_video, cv2.VideoWriter_fourcc(*'mp4v'), fps, (width, height))
+output_video_path = "output.mp4"
+output_video = cv2.VideoWriter(output_video_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (width, height))
 
 while True:
 
@@ -51,4 +51,3 @@ video_Capture.release()
 cv2.destroyAllWindows()
 
 
-output_video_path = output_video
