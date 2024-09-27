@@ -15,23 +15,27 @@ color_ranges = {
 }
 color=input("masukkan warna : ")
 
-def detect_color(image,lower_color, upper_color):
-    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
-    mask = cv2.inRange(hsv, lower_color, upper_color)
-    result=cv2.bitwise_and(image, image, mask=mask)
+def color_detection(image_path, lower_color, upper_color):
+    image = cv2.imread(image_path)
+    if image is None:
+        print("Error: Could not load image")
+        return None
+    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    mask = cv2.inRange(hsv_image, lower_color, upper_color)
+    result = cv2.bitwise_and(image, image, mask=mask)
     return result
 
-if color not in color_ranges.keys():
-    print("Warna tidak ditemukan")
-    exit()
-elif color in color_ranges.keys():
-    print("Warna ditemukan")
-    resul = detect_color(image_path, np.array(color_ranges[color][0]), np.array(color_ranges[color][1]))
-    cv2.imshow('image', image_path)
 
-    cv2.imshow('resul', resul)
+
+if color in color_ranges.keys():
+    result = color_detection(image, np.array(color_ranges[color][0]), np.array(color_ranges[color][1]))
+
+    cv2.imshow('original image', image_path)
+
+    cv2.imshow('result', result)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-
+else:
+    print("color not found")
 
