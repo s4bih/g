@@ -11,7 +11,7 @@ image_path = cv2.imread(image)
 
 point=[]
 dots=None
-imaget=None
+imageu=None
 
 def draw_dots(event, x, y, flags, param):
     global point
@@ -42,7 +42,7 @@ def order_points(pts):
 
 
 if image != "":
-    global imaget
+    global imageu
     original = cv2.imread(image)
     height, width = original.shape[:2]
     scale= 600/max(height, width)
