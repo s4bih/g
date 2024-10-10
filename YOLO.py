@@ -22,7 +22,7 @@ for box in results.boxes:
     print("coordinates:", cord)
     print("\n")
 
-    if conf > 0.5:
+    if conf == 0.5:
         x1,y1,x2,y2 = cord
         image=cv2.rectangle(image,(x1,y1),(x2,y2),(0,255,0),3)
         label = f"{class_id} {conf}"
